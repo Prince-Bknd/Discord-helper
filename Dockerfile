@@ -5,7 +5,8 @@ RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
-COPY --from=build target/serverHelper.jar ./serverHelper.jar
+
+COPY --from=build target/serverHelper-0.0.1-SNAPSHOT.jar ./serverHelper.jar
 
 ENV DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
 
