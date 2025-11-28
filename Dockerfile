@@ -1,19 +1,12 @@
-FROM maven:3.9.5-eclipse-temurin-17 AS build
-
-WORKDIR /app
-
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 COPY pom.xml .
 COPY src ./src
-
 RUN mvn clean package -DskipTests
 
-FROM eclipse-temurin:17-jdk-alpine
-
+FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
-
-COPY --from=build /app/target/serverHelper-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build target/serverHelper.jar ./serverHelper.jar
 
 ENV DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
 
-CMD ["java", "-jar", "app.jar"]
-
+CMD ["java", "-jar", "serverHelper.jar"]
