@@ -3,6 +3,6 @@ spring:
     name: serverHelper
 
 discord:
-  token: ${DISCORD_TOKEN}
+  token: ${Discord_Token}
   enabled: true
   intents: "GUILDS,MESSAGE_CONTENT,GUILD_MESSAGES"
