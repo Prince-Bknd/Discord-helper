@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: serverHelper
+
+discord:
+  token: ${DISCORD_TOKEN}
+  enabled: true
+  intents: "GUILDS,MESSAGE_CONTENT,GUILD_MESSAGES"
